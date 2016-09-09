@@ -1,0 +1,26 @@
+{
+    "name": "laravelhungary/announcement",
+    "description": "",
+    "keywords": ["laravel", "announcement", "redis", 'hocza'],
+    "homepage": "http://hocza.com",
+    "authors": [
+        {
+            "name": "Jozsef Hocza",
+            "email": "jozsef@hocza.com"
+        }
+    ],
+    "require": {
+        "illuminate/support": "~5.0",
+        "predis/predis": "^1.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.5"
+    },
+    "autoload": {
+       "psr-4": {
+         "LaravelHungary\\Announcement\\": "src/Package"
+        }
+    },
+    "license": "MIT"
+    
+}
