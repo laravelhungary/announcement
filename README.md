@@ -7,16 +7,24 @@ To achieve this the package simply uses the Redis's TTL.
 
 ## Installation
 
-1. `composer require laravelhungary/announcement`
-2. Add the followings to `config/app.php`
+1- `composer require laravelhungary/announcement`
+
+2- Add the followings to `config/app.php`
+
 ```php
-# to the providers array
-LaravelHungary\Announcement\PackageServiceProvider::class,
-#to the aliases array
-'Announce' => LaravelHungary\Announcement\Facades\Announce::class,
+'providers' => [
+    ...
+
+    LaravelHungary\Announcement\PackageServiceProvider::class,
+],
+
+'aliases' => [
+    ...
+
+    'Announce' => LaravelHungary\Announcement\Facades\Announce::class,
+]
 ```
-3. I strongly advise to `composer require predis/predis` also.
-4. That's it.
+3- That's it.
 
 ## Usage
 
@@ -30,11 +38,19 @@ Params
 * `ttl` When should the announcement expire. [Time to live] in seconds.
 
 ### Display of Announcements
-`Announce::display()`
+`{!! Announce::display() !!}`
 
-If you would like to override the default bootstrap alerts, feel free to create your own `alert.blade.php`:
+If you would like to override the default bootstrap alerts, feel free to create your own in `resources/views/vendor/announcement/alert.blade.php`
 
-`resources/views/vendor/announcement/alert.blade.php`
+**example:**
+
+```blade
+@foreach($announcements as $announcement)
+  <div class="alert alert-{{ $announcement->type }}">
+    <strong>{{ $announcement->title }}</strong> {{ $announcement->message }}
+  </div>
+@endforeach
+```
 
 ## Package dependencies
 
