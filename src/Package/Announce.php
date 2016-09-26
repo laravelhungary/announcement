@@ -2,21 +2,50 @@
 
 namespace LaravelHungary\Announcement;
 
-use Redis;
+use App\Events\NewAnnouncement;
 
 class Announce
 {
-
-    static public function create($type = 'info', $title = '', $message = '', $ttl = 60)
+    /**
+     * create new announcement.
+     *
+     * @param string $type
+     * @param string $title
+     * @param string $message
+     * @param int    $ttl
+     *
+     * @return [type]
+     */
+    public static function create($type = 'info', $title = '', $message = '', $ttl = 60)
     {
         $announcement = new Announcement($type, $title, $message, $ttl);
         $announcement->save();
     }
 
-    static public function display()
+    /**
+     * display the announcement.
+     *
+     * @return [type]
+     */
+    public static function display()
     {
         $announcements = Announcement::all();
 
-        return view('announcement::alert',compact('announcements'))->render();
+        return view('announcement::alert', compact('announcements'))->render();
+    }
+
+    /**
+     * broadcast a public announcement.
+     *
+     * @param string $type
+     * @param string $title
+     * @param string $message
+     * @param string $channel_name
+     *
+     * @return [type]
+     */
+    public static function broadcast($type = 'info', $title = '', $message = '', $ttl, $channel_name = 'public-announcement-channel')
+    {
+        event(new NewAnnouncement($type, $title, $message, $ttl, $channel_name));
     }
 }
