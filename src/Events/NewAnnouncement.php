@@ -17,14 +17,16 @@ class NewAnnouncement implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct($type, $title, $message, $ttl, $channel_name)
+    public function __construct($type, $title, $message, $ttl, $transition, $channel_name)
     {
         $this->data = [
-            'type'    => $type,
-            'title'   => $title,
-            'message' => $message,
-            'ttl'     => $ttl,
+            'type'       => $type,
+            'title'      => $title,
+            'message'    => $message,
+            'ttl'        => $ttl,
+            'transition' => $transition,
         ];
+
         $this->channel_name = $channel_name;
     }
 

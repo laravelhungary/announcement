@@ -44,8 +44,14 @@ class Announce
      *
      * @return [type]
      */
-    public static function broadcast($type = 'info', $title = '', $message = '', $ttl, $channel_name = 'public-announcement-channel')
+    public static function broadcast($type = 'info', $title = '', $message = '', $ttl = 60, $transition = null, $channel_name = null)
     {
+        if ( ! $channel_name) {
+            $channel_name = env('ANNOUNCEMENTS-CHANNEL');
+        }
+
+        $ttl = $ttl * 1000;
+
         event(new NewAnnouncement($type, $title, $message, $ttl, $channel_name));
     }
 }
