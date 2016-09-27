@@ -17,12 +17,12 @@ class NewAnnouncement implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct($type, $title, $message, $ttl, $transition, $channel_name)
+    public function __construct(string $title, string $message, string $type, int $ttl, string $transition, string $channel_name)
     {
         $this->data = [
-            'type'       => $type,
             'title'      => $title,
             'message'    => $message,
+            'type'       => $type,
             'ttl'        => $ttl,
             'transition' => $transition,
         ];
@@ -37,6 +37,7 @@ class NewAnnouncement implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel($this->channel_name);
+        // return new Channel($this->channel_name);
+        return new Channel('public-announcement-channel');
     }
 }

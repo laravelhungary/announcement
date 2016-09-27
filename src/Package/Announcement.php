@@ -2,9 +2,8 @@
 
 namespace LaravelHungary\Announcement;
 
-use Redis;
-use App\Events\NewAnnouncement;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Redis;
 
 class Announcement
 {
@@ -37,17 +36,17 @@ class Announcement
     /**
      * Announcement constructor.
      *
-     * @param $type
-     * @param $title
-     * @param $message
-     * @param int $ttl
+     * @param string $title
+     * @param string $message
+     * @param string $type
+     * @param int    $ttl
      */
-    public function __construct($type, $title, $message, $ttl)
+    public function __construct(string $title, string $message, string $type, int $ttl)
     {
-        $this->type                 = $type;
-        $this->title                = $title;
-        $this->message              = $message;
-        $this->ttl                  = $ttl;
+        $this->title   = $title;
+        $this->message = $message;
+        $this->type    = $type;
+        $this->ttl     = $ttl;
     }
 
     public function save()

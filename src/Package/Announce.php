@@ -7,18 +7,18 @@ use App\Events\NewAnnouncement;
 class Announce
 {
     /**
-     * create new announcement.
+     * [create description].
      *
-     * @param string $type
      * @param string $title
      * @param string $message
+     * @param string $type
      * @param int    $ttl
      *
-     * @return [type]
+     * @return [type] [description]
      */
-    public static function create($type = 'info', $title = '', $message = '', $ttl = 60)
+    public static function create($title = '', $message = '', $type = 'info', $ttl = 60)
     {
-        $announcement = new Announcement($type, $title, $message, $ttl);
+        $announcement = new Announcement($title, $message, $type, $ttl);
         $announcement->save();
     }
 
@@ -35,23 +35,25 @@ class Announce
     }
 
     /**
-     * broadcast a public announcement.
+     * [broadcast description].
      *
-     * @param string $type
      * @param string $title
      * @param string $message
-     * @param string $channel_name
+     * @param string $type
+     * @param int    $ttl
+     * @param string $transition
+     * @param [type] $channel_name
      *
      * @return [type]
      */
-    public static function broadcast($type = 'info', $title = '', $message = '', $ttl = 60, $transition = null, $channel_name = null)
+    public static function broadcast($title = '', $message = '', $type = 'info', $ttl = 60, $transition = 'fade', $channel_name = null)
     {
         if ( ! $channel_name) {
-            $channel_name = env('ANNOUNCEMENTS-CHANNEL');
+            $channel_name = config('announcement.broadcasting_channel');
         }
 
         $ttl = $ttl * 1000;
 
-        event(new NewAnnouncement($type, $title, $message, $ttl, $channel_name));
+        event(new NewAnnouncement($title, $message, $type, $ttl, $transition, $channel_name));
     }
 }

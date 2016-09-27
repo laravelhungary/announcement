@@ -3,12 +3,10 @@
 
 A package that simplifies the management of site-wide announcements. With "Laravel Announcement" you can display auto-expiring announcements.
 
-To achieve this the package simply uses the Redis's TTL.
-
 ## Installation
 
 1- `composer require laravelhungary/announcement`
-- this package also requires **`predis/predis`** to be installed in-order to work
+- plz note that the package use `predis/predis` for all of its operation.
 
 2- Add the followings to `config/app.php`
 
@@ -26,21 +24,19 @@ To achieve this the package simply uses the Redis's TTL.
 ]
 ```
 
-3- That's it.
+3- run `php artisan vendor:publish`
 
-> if you need to broadcast the announcements through something like web-sockets please check [Echo Installation](https://laravel.com/docs/5.3/broadcasting#installing-laravel-echo)
+4- That's it.
+
+> if you need to broadcast the announcements through something like web-sockets please check [Event Broadcasting](https://laravel.com/docs/5.3/broadcasting)
 
 ## Usage
 
 ### Normal
 #### Create Announcement
-`Announce::create($type, $title, $message, $ttl);`
+`Announce::create($title, $message, $type, $ttl);`
 
 Params
-* `type` Type of the announcement.
-
-> For example: success,info,danger,warning (or anything you would like to use)
-
 * `title` a short message.
 
 > For example: Breaking news!
@@ -48,6 +44,10 @@ Params
 * `message` A bit longer message.
 
 > For example: Our servers are under a DDoS attack. We are trying hard to mitigate it.
+
+* `type` Type of the announcement.
+
+> For example: success,info,danger,warning (or anything you would like to use) , Default is: info
 
 * `ttl` When should the announcement expire. [Time to live] in seconds.
 
@@ -61,29 +61,21 @@ put `{!! Announce::display() !!}` anywhere you want your announcement to be visi
 
 ### Broadcasting
 #### Create Announcement
-`Announce::broadcast($type, $title, $message, $ttl, $transition, $channel_name);`
+`Announce::broadcast($title, $message, $type, $ttl, $transition);`
 
 Params
-* `type`,`title`,`message`,`ttl` same as the [normal](#normal) announcement
+* `title`,`message`,`type`,`ttl` same as the [normal](#normal) announcement
 
 * `transition` what is animation type you want.
 
-> For example: fade , bounce, etc... [Check Vue Transition](http://vuejs.org/guide/transitions.html#CSS-Transitions)
-
-* `channel_name` the channel name we will use to broadcast the announcement over.
-
-> Default is: `public-announcement-channel` which you can override it directly through the method call or through your ***.env*** file under **ANNOUNCEMENTS-CHANNEL**
+> For example: fade , bounce, etc... [Check Vue Transition](http://vuejs.org/guide/transitions.html#CSS-Transitions) , Default is: fade
 
 #### Display of Announcements
 - note that the package doesnt care what driver you use `pusher` or `socket.io` , it will just work 🍺.
 - we also use **VueJs**, but if you want to use something else then ignore the below and you are free to build your own.
 
-1- put
-`Vue.component('my-announcement', require('../../vendor/laravelhungary/announcement/src/components/Announcement-bootstrap.vue'));`
-into your **app.js** file
+1- put `Vue.component('my-announcement', require('./components/Announcement-bootstrap.vue'));` into your **app.js** file
 
 2- put `<my-announcement></my-announcement>` anywhere you want this announcement to show up. For example: your **layout.blade.php** file
 
-3- dont forget to [Check Vue Transition](http://vuejs.org/guide/transitions.html#CSS-Transitions).
-
->  if you want to use `Animate.css` just copy the css code into the `*-enter` & `*-leave` classes in your css file and your are done 🎉.
+>  if you want to use `Animate.css` follow [Custom Transition Classes](https://vuejs.org/guide/transitions.html#Custom-Transition-Classes)
