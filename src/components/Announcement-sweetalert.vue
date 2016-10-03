@@ -1,0 +1,34 @@
+<script>
+    export default {
+
+        data: function () {
+            return {
+                announcement: {}
+            };
+        },
+
+        ready() {
+            this.listen();
+        },
+
+        methods: {
+            listen() {
+                window.Echo
+                .channel('all-channel')
+                .listen('NewArticleWasPublished', (e) => {
+                    this.announcement = e.data;
+
+                    swal({
+                        type: this.announcement.type,
+                        title: this.announcement.message,
+                        text: this.announcement.title,
+                        allowOutsideClick: true,
+                        showConfirmButton: true,
+                        confirmButtonText: "Got it!",
+                        timer: this.announcement.ttl
+                    });
+                });
+            }
+        },
+    }
+</script>
