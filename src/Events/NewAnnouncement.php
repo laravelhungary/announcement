@@ -23,8 +23,8 @@ class NewAnnouncement implements ShouldBroadcast
             'title'      => $title,
             'message'    => $message,
             'type'       => $type,
-            'ttl'        => $ttl,
             'transition' => $transition,
+            'ttl'        => $ttl,
         ];
 
         $this->channel_name = $channel_name;

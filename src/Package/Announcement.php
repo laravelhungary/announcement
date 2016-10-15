@@ -13,12 +13,14 @@ class Announcement
      * @var
      */
     public $type;
+
     /**
      * It should be a short message, that what is the message about. For example: Breaking news!
      *
      * @var
      */
     public $title;
+
     /**
      * A bit longer message that what is the situation. For example: Our servers are under a DDoS attack. We are trying hard to mitigate it.
      *

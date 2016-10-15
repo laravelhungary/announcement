@@ -14,8 +14,8 @@
         methods: {
             listen() {
                 window.Echo
-                .channel('all-channel')
-                .listen('NewArticleWasPublished', (e) => {
+                .channel('public-announcement-channel')
+                .listen('NewAnnouncement', (e) => {
                     this.announcement = e.data;
 
                     swal({

@@ -25,10 +25,11 @@ class PackageServiceProvider extends ServiceProvider
 
         // Publish your config
         $this->publishes([
-            __DIR__.'/../config/config.php'                     => config_path($this->packageName.'.php'),
-            __DIR__.'/../views/alert.blade.php'                 => resource_path('views/vendor/'.$this->packageName.'/alert.blade.php'),
-            __DIR__.'/../Events/NewAnnouncement.php'            => app_path('Events/NewAnnouncement.php'),
-            __DIR__.'/../components/Announcement-bootstrap.vue' => resource_path('assets/js/components/Announcement-bootstrap.vue'),
+            __DIR__.'/../config/config.php'                      => config_path($this->packageName.'.php'),
+            __DIR__.'/../views/alert.blade.php'                  => resource_path('views/vendor/'.$this->packageName.'/alert.blade.php'),
+            __DIR__.'/../Events/NewAnnouncement.php'             => app_path('Events/NewAnnouncement.php'),
+            __DIR__.'/../components/Announcement-bootstrap.vue'  => resource_path('assets/js/components/Announcement-bootstrap.vue'),
+            __DIR__.'/../components/Announcement-sweetalert.vue' => resource_path('assets/js/components/Announcement-sweetalert.vue'),
         ], 'config');
     }
 
