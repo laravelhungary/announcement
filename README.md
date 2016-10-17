@@ -59,8 +59,8 @@ If you would like to override the default bootstrap alerts, feel free to create 
 
 Package Maintainers
 ---
-Jozsef Hocza [@hocza](https://github.com/hocza)
-Muah [@ctf0](https://github.com/ctf0)
+* Jozsef Hocza [@hocza](https://github.com/hocza)
+* Muah [@ctf0](https://github.com/ctf0)
 
 Buy us a coffee :)
 ---
