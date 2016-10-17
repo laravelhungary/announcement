@@ -56,3 +56,12 @@ If you would like to override the default bootstrap alerts, feel free to create 
 ## Package dependencies
 
 "predis/predis"
+
+Package Maintainers
+---
+Jozsef Hocza [@hocza](https://github.com/hocza)
+Muah [@ctf0](https://github.com/ctf0)
+
+Buy us a coffee :)
+---
+<a href='https://pledgie.com/campaigns/32748'><img alt='Click here to lend your support to: laravel-announcement and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/32748.png?skin_name=chrome' border='0' ></a>
