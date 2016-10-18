@@ -24,7 +24,15 @@ A package that simplifies the management of site-wide announcements. With "Larav
 ]
 ```
 
-3- run `php artisan vendor:publish`
+3- run `php artisan vendor:publish` and you will get
+
+```shell
+/config/announcement.php
+/views/vendor/announcement/alert.blade.php
+/Events/NewAnnouncement.php
+/components/Announcement-bootstrap.vue
+/components/Announcement-sweetalert.vue
+```
 
 4- That's it.
 
@@ -61,7 +69,7 @@ put `{!! Announce::display() !!}` anywhere you want your announcement to be visi
 
 ### Broadcasting
 #### Create Announcement
-`Announce::broadcast($title, $message, $type, $ttl, $transition);`
+`Announce::broadcast($title, $message, $type, $ttl, $transition, $channel_name);`
 
 Params
 * `title`,`message`,`type`,`ttl` same as the [normal](#normal) announcement
@@ -69,6 +77,11 @@ Params
 * `transition` what is animation type you want.
 
 > For example: fade , bounce, etc... [Check Vue Transition](http://vuejs.org/guide/transitions.html#CSS-Transitions) , Default is: fade
+
+* `channel_name` change it to override the config value "dont forget to also change it in the component file"
+
+> Default is: public-announcement-channel
+
 
 #### Display of Announcements
 - note that the package doesnt care what driver you use `pusher` or `socket.io` , it will just work 🍺.

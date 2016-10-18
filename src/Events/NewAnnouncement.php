@@ -37,7 +37,10 @@ class NewAnnouncement implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        // return new Channel($this->channel_name);
-        return new Channel('public-announcement-channel');
+        if ($this->channel_name) {
+            return new Channel($this->channel_name);
+        }
+
+        return new Channel(config('announcement.broadcasting_channel'));
     }
 }
