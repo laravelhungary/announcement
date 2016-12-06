@@ -92,3 +92,13 @@ Params
 2- put `<my-announcement></my-announcement>` anywhere you want this announcement to show up. For example: your **layout.blade.php** file
 
 >  if you want to use `Animate.css` follow [Custom Transition Classes](https://vuejs.org/guide/transitions.html#Custom-Transition-Classes)
+"predis/predis"
+
+Package Maintainers
+---
+* Jozsef Hocza [@hocza](https://github.com/hocza)
+* Muah [@ctf0](https://github.com/ctf0)
+
+Buy us a coffee :)
+---
+<a href='https://pledgie.com/campaigns/32748'><img alt='Click here to lend your support to: laravel-announcement and make a donation at pledgie.com !' src='https://pledgie.com/campaigns/32748.png?skin_name=chrome' border='0' ></a>
