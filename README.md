@@ -92,7 +92,6 @@ Params
 2- put `<my-announcement></my-announcement>` anywhere you want this announcement to show up. For example: your **layout.blade.php** file
 
 >  if you want to use `Animate.css` follow [Custom Transition Classes](https://vuejs.org/guide/transitions.html#Custom-Transition-Classes)
-"predis/predis"
 
 Package Maintainers
 ---
