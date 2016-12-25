@@ -85,13 +85,13 @@ Params
 
 #### Display of Announcements
 - note that the package doesnt care what driver you use `pusher` or `socket.io` , it will just work 🍺.
-- we also use **VueJs**, but if you want to use something else then ignore the below and you are free to build your own.
+- we also use **VueJs 2**, but if you want to use something else then ignore the below and you are free to build your own.
 
 1- put `Vue.component('my-announcement', require('./components/Announcement-bootstrap.vue'));` into your **app.js** file
 
 2- put `<my-announcement></my-announcement>` anywhere you want this announcement to show up. For example: your **layout.blade.php** file
 
->  if you want to use `Animate.css` follow [Custom Transition Classes](https://vuejs.org/guide/transitions.html#Custom-Transition-Classes)
+>  if you want to use something like `Animate.css` follow [Custom Transition Classes](https://vuejs.org/v2/guide/transitions.html#Custom-Transition-Classes)
 
 Package Maintainers
 ---
