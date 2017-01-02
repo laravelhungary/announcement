@@ -1,19 +1,21 @@
 <template>
-    <div v-if="show" :transition="transitionName" class="alert alert-{{ announcement.type }}">
-        <button type="button" class="close" @click="show = false">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>{{ announcement.title }}</strong> {{ announcement.message }}
-    </div>
+    <transition :name="transitionName">
+        <div v-if="show" class="alert alert-{{ announcement.type }}">
+            <button type="button" class="close" @click="show = false">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>{{ announcement.title }}</strong> {{ announcement.message }}
+        </div>
+    </transition>
 </template>
 
-<style>
-     .fade-transition {
-        transition: all .3s ease;
-        height: auto;
+<style scoped>
+    .fade-enter-active, .fade-leave-active {
+      transition: all .3s ease;
+      height: auto;
     }
     .fade-enter,
-    .fade-leave {
+    .fade-leave-active {
         height: 0;
         padding: 0 10px;
         opacity: 0;
@@ -25,7 +27,7 @@
         data() {
             return {
                 announcement: {},
-                transitionName: '',
+                transitionName: 'fade',
                 show: false
             };
         },
@@ -49,7 +51,7 @@
                     setTimeout(
                         () =>this.show = false,
                         response.data.ttl
-                    );
+                        );
                 });
             }
         },
