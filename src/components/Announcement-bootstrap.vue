@@ -32,7 +32,7 @@
             };
         },
 
-        ready() {
+        created() {
             this.listen();
         },
 
