@@ -9,7 +9,7 @@
             };
         },
 
-        ready() {
+        created() {
             this.listen();
         },
 
