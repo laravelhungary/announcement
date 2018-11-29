@@ -40,7 +40,7 @@ class PackageServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', $this->packageName);
 
-        $this->app['announce'] = $this->app->share(function ($app) {
+        $this->app->singleton('announce', function () {
             return new Announce();
         });
     }
